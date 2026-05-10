@@ -100,7 +100,7 @@ struct KeyPair {
 
 namespace XWing {
 
-/// @brief X-Wing public key size (1,568 bytes).
+/// @brief X-Wing public key size (1,216 bytes).
 static constexpr std::size_t PUBLIC_KEY_SIZE = crypto_kem_PUBLICKEYBYTES;
 
 /// @brief X-Wing secret key size (32 bytes).
@@ -109,7 +109,7 @@ static constexpr std::size_t SECRET_KEY_SIZE = crypto_kem_SECRETKEYBYTES;
 /// @brief X-Wing shared secret size (32 bytes).
 static constexpr std::size_t SHARED_KEY_SIZE = crypto_kem_SHAREDSECRETBYTES;
 
-/// @brief X-Wing ciphertext size (1,312 bytes).
+/// @brief X-Wing ciphertext size (1,210 bytes).
 static constexpr std::size_t CIPHERTEXT_SIZE = crypto_kem_CIPHERTEXTBYTES;
 
 /**
@@ -260,7 +260,7 @@ static constexpr std::size_t SHARED_KEY_SIZE = crypto_kem_mlkem768_SHAREDSECRETB
 /// @brief ML-KEM-768 ciphertext size (1,088 bytes).
 static constexpr std::size_t CIPHERTEXT_SIZE = crypto_kem_mlkem768_CIPHERTEXTBYTES;
 
-/// @brief ML-KEM768 seed size (32 bytes).
+/// @brief ML-KEM768 seed size (64 bytes).
 static constexpr std::size_t SEED_SIZE = crypto_kem_mlkem768_SEEDBYTES;
 
 /**
