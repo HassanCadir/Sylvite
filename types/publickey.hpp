@@ -72,11 +72,6 @@ namespace sylvite::types {
 class PublicKey final: public sylvite::internal::Base<std::uint8_t, sylvite::internal::s_alloc<std::uint8_t>> {
     using B_ = sylvite::internal::Base<std::uint8_t, sylvite::internal::s_alloc<std::uint8_t>>;
 
-    /// @brief Resize operation — used by friend key generation functions.
-    void resize(std::size_t n_) {
-        this->vec_.resize(n_);
-    }
-
     public:
     /**
      * @brief Construct a PublicKey from a 32-byte span (Ed25519 public key).
@@ -101,6 +96,11 @@ class PublicKey final: public sylvite::internal::Base<std::uint8_t, sylvite::int
      * by a key generation function.
      */
     explicit PublicKey(std::size_t size_) : B_(size_) {}
+
+    /// @brief Resize operation — used by friend key generation functions.
+    void resize(std::size_t n_) {
+        this->vec_.resize(n_);
+    }
 
     // Allow key generation functions to resize the key
     friend sylvite::kem::KeyPair sylvite::kem::XWing::generate_keypair();
