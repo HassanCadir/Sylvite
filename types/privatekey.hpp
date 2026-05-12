@@ -99,11 +99,6 @@ class PrivateKey final : public sylvite::internal::Base<std::uint8_t, sylvite::i
     /// @brief Default constructor (friend functions only).
     PrivateKey() : B_() {}
 
-    /// @brief Resize the key buffer (friend functions only).
-    void resize(std::size_t n_) {
-        this->vec_.resize(n_);
-    }
-
     public:
     /**
      * @brief Construct a Curve25519 private key from a 32-byte span.
@@ -142,6 +137,11 @@ class PrivateKey final : public sylvite::internal::Base<std::uint8_t, sylvite::i
         if (v_.size() == crypto_sign_SECRETKEYBYTES) this->vec_ = std::move(v_);
         else if (v_.size() == crypto_box_SECRETKEYBYTES) this->vec_ = std::move(v_);
         else throw sylvite::exceptions::SodiumLogicError("The vector size must be 32 bytes or 64 bytes.");
+    }
+
+    /// @brief Resize the key buffer (friend functions only).
+    void resize(std::size_t n_) {
+        this->vec_.resize(n_);
     }
 
     // Allow key generation functions to use private constructors
